@@ -25,7 +25,9 @@ his6 = 0
 his7 = 0
 
 class PinPonDetect:
-  print('PinPonDetected!')
+
+  def MaggasePrintOnly():
+    print('PinPonDetected!')
 
 
 while True:
@@ -37,7 +39,8 @@ while True:
       #print(GPIO.input(sw))
 
       if his0 == his1 == his4 == his5 == 0 and his2 == his3 == his6 == his7 == 1:
-        PinPonDetect()
+        PinPonD = PinPonDetect()
+        PinPonD.MassagePrintOnly()
       if i == 7:
         print('LoopReset!(Scaned 8 Times to Reset Loop.)')
       #if his0 == his1 == his4 == his5 == 1 and his2 == his3 == his6 == his7 == 0:
