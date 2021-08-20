@@ -28,12 +28,14 @@ while True:
     for i in range(8):
       execcom = 'his' + str(i) + ' = GPIO.input(sw)'
       exec(execcom)
-      time.sleep(0.0625)
-  
+      print(GPIO.input(sw))
+
       if his0 == his1 == his4 == his5 == 0 and his2 == his3 == his6 == his7 == 1:
         print('PinPonDetected!')
       if his0 == his1 == his4 == his5 == 1 and his2 == his3 == his6 == his7 == 0:
         print('PinPonDetected!')
+      
+      time.sleep(0.0625)
   except KeyboardInterrupt:
     GPIO.cleanup()
     break
