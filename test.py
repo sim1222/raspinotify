@@ -14,6 +14,14 @@ swinfo = GPIO.input(sw)
 
 lighthis = ['his0', 'his1', 'his2', 'his3', 'his4', 'his5', 'his6', 'his7', ]
 
+his0 = 0
+his1 = 0
+his2 = 0
+his3 = 0
+his4 = 0
+his5 = 0
+his6 = 0
+his7 = 0
 
 while True:
   try:
@@ -22,9 +30,9 @@ while True:
       exec(execcom)
       time.sleep(0.0625)
   
-      if his0 = his1 = his4 = his5 = 0 and his2 = his3 = his6 = his7 = 1:
+      if his0 == his1 == his4 == his5 == 0 and his2 == his3 == his6 == his7 == 1:
         print('PinPonDetected!')
-      if his0 = his1 = his4 = his5 = 1 and his2 = his3 = his6 = his7 = 0:
+      if his0 == his1 == his4 == his5 == 1 and his2 == his3 == his6 == his7 == 0:
         print('PinPonDetected!')
   except KeyboardInterrupt:
     GPIO.cleanup()
