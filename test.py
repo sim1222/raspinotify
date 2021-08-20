@@ -12,6 +12,7 @@ GPIO.setup(led, GPIO.OUT)
 
 swinfo = GPIO.input(sw)
 
+
 lighthis = ['his0', 'his1', 'his2', 'his3', 'his4', 'his5', 'his6', 'his7', ]
 
 his0 = 0
@@ -23,17 +24,24 @@ his5 = 0
 his6 = 0
 his7 = 0
 
+class PinPonDetect:
+  print('PinPonDetected!')
+
+
 while True:
   try:
+    print('LoopStart!')
     for i in range(8):
       execcom = 'his' + str(i) + ' = GPIO.input(sw)'
       exec(execcom)
       print(GPIO.input(sw))
 
       if his0 == his1 == his4 == his5 == 0 and his2 == his3 == his6 == his7 == 1:
-        print('PinPonDetected!')
-      if his0 == his1 == his4 == his5 == 1 and his2 == his3 == his6 == his7 == 0:
-        print('PinPonDetected!')
+        PinPonDetect()
+      if i == 7:
+        print('LoopReset!(Scaned 8 Times to Reset Loop.)')
+      #if his0 == his1 == his4 == his5 == 1 and his2 == his3 == his6 == his7 == 0:
+      #  print('PinPonDetected!')
       
       time.sleep(0.0625)
   except KeyboardInterrupt:
