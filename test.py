@@ -12,6 +12,20 @@ GPIO.setup(led, GPIO.OUT)
 
 swinfo = GPIO.input(sw)
 
+lighthis = ['his0', 'his1', 'his2', 'his3', 'his4', 'his5', 'his6', 'his7', ]
+
+for i in range(8):
+  exec(his' + str(i) + ' = GPIO.input(sw)):
+  time.sleep(0.0625)
+  
+  if his0 = his1 = his4 = his5 = 0 and his2 = his3 = his6 = his7 = 1:
+    print('PinPonDetected!')
+  if his0 = his1 = his4 = his5 = 1 and his2 = his3 = his6 = his7 = 0:
+    print('PinPonDetected!')
+  
+
+    
+
 while True:
   try:
     print(GPIO.input(sw))
