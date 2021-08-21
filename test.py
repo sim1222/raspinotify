@@ -31,8 +31,9 @@ def PinPonNotify():
   global pinponflag
   pinponflag = True
   print('PinPonDetected!')
-  time.sleep(60)
+  time.sleep(10)
   pinponflag = False
+  print('PinPonReset!')
 
 def PinPonDetect():
   global pinponflag
@@ -54,16 +55,16 @@ while True:
 
       if his0 == his1 == his4 == his5 == 0 and his2 == his3 == his6 == his7 == 1:
         PinPonDetect()
-        print('PinPon!')
+        #print('PinPon!')
       if his0 == his1 == his4 == his5 == 1 and his2 == his3 == his6 == his7 == 0:
         PinPonDetect()
-        print('PinPon!')
+        #print('PinPon!')
       if his1 == his2 == his5 == his6 == 1 and his0 == his3 == his4 == his7 == 0:
         PinPonDetect()
-        print('PinPon!')
+        #print('PinPon!')
       if his1 == his2 == his5 == his6 == 0 and his0 == his3 == his4 == his7 == 1:
         PinPonDetect()
-        print('PinPon!')
+        #print('PinPon!')
       if i == 7:
         print('LoopReset!(Scanned 8 times so reset the loop.)')
 
