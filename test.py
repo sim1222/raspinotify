@@ -24,9 +24,16 @@ his5 = 0
 his6 = 0
 his7 = 0
 
+pinponflag = False
 
-def PinPonDetect():
-  print('PinPonDetected!')
+def PinPonDetect(pinponflag):
+  if pinponflag == False:
+    pinponflag = True
+    print('PinPonDetected!')
+    time.sleep(60)
+    pinponflag = False
+  else:
+    pass
 
 
 while True:
