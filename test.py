@@ -3,6 +3,7 @@ import RPi.GPIO as GPIO
 import time
 import datetime
 import threading
+import notify
 
 lightsensor = 20
 callsw = 17
@@ -35,7 +36,7 @@ def PinPonNotify():
   global pinponflag
   pinponflag = True
   print('PinPonDetected!' + datetime.now())
-  
+  notify.linenotify()
   time.sleep(10)
   pinponflag = False
   print('PinPonReset!')
