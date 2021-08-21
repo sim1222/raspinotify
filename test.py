@@ -32,7 +32,7 @@ class PinPonDetect:
 
 while True:
   try:
-    print('LoopStart!')
+    #print('LoopStart!')
     for i in range(8):
       execcom = 'his' + str(i) + ' = GPIO.input(sw)'
       exec(execcom)
@@ -40,7 +40,7 @@ while True:
 
       if his0 == his1 == his4 == his5 == 0 and his2 == his3 == his6 == his7 == 1:
         PinPonD = PinPonDetect()
-        PinPonD.MassagePrintOnly()
+        PinPonD.MaggasePrintOnly()
       if i == 7:
         print('LoopReset!(Scaned 8 Times to Reset Loop.)')
       #if his0 == his1 == his4 == his5 == 1 and his2 == his3 == his6 == his7 == 0:
