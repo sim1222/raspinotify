@@ -1,17 +1,21 @@
+from subprocess import call
 import RPi.GPIO as GPIO
 import time
+import datetime
 import threading
 
-sw = 20
+lightsensor = 20
+callsw = 17
 led = 21
 
 GPIO.setmode(GPIO.BCM)
 
 #GPIO.setup(sw, GPIO.IN)
-GPIO.setup(sw, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(lightsensor, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(callsw, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(led, GPIO.OUT)
 
-swinfo = GPIO.input(sw)
+swinfo = GPIO.input(lightsensor)
 
 
 lighthis = ['his0', 'his1', 'his2', 'his3', 'his4', 'his5', 'his6', 'his7', ]
@@ -30,7 +34,8 @@ pinponflag = False
 def PinPonNotify():
   global pinponflag
   pinponflag = True
-  print('PinPonDetected!')
+  print('PinPonDetected!' + datetime.now())
+  
   time.sleep(10)
   pinponflag = False
   print('PinPonReset!')
@@ -49,7 +54,7 @@ while True:
   try:
     #print('LoopStart!')
     for i in range(8):
-      execcom = 'his' + str(i) + ' = GPIO.input(sw)'
+      execcom = 'his' + str(i) + ' = GPIO.input(lightsensor)'
       exec(execcom)
       #print(GPIO.input(sw))
 
@@ -65,8 +70,8 @@ while True:
       if his1 == his2 == his5 == his6 == 0 and his0 == his3 == his4 == his7 == 1:
         PinPonDetect()
         #print('PinPon!')
-      if i == 7:
-        print('LoopReset!(Scanned 8 times so reset the loop.)')
+      #if i == 7:
+        #print('LoopReset!(Scanned 8 times so reset the loop.)')
 
       
       time.sleep(0.0625)

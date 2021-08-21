@@ -10,6 +10,8 @@ def linenotify():
     send_dic = {'message': send_contents}
 
     requests.post(api_url, headers=TOKEN_dic, data=send_dic)
+    print('LINE Notify sent.')
 
 def alexanotify():
     subprocess.run('~/alexa_remote_control.sh -e "speak:テスト"')
+    print('Alexa speak command sent.')
