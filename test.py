@@ -27,6 +27,7 @@ his7 = 0
 pinponflag = False
 
 def PinPonDetect():
+  global pinponflag
   if pinponflag == False:
     pinponflag = True
     print('PinPonDetected!')
