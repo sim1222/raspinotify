@@ -40,9 +40,9 @@ while True:
 
       if his0 == his1 == his4 == his5 == 0 and his2 == his3 == his6 == his7 == 1:
         PinPonD = PinPonDetect()
-        PinPonD.MaggasePrintOnly()
+        PinPonD.MaggasePrintOnly
       if i == 7:
-        print('LoopReset!(Scaned 8 Times to Reset Loop.)')
+        print('LoopReset!(Scanned 8 times so reset the loop.)')
       #if his0 == his1 == his4 == his5 == 1 and his2 == his3 == his6 == his7 == 0:
       #  print('PinPonDetected!')
       
