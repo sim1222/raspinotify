@@ -27,17 +27,21 @@ his7 = 0
 
 pinponflag = False
 
+def PinPonNotify():
+  global pinponflag
+  pinponflag = True
+  print('PinPonDetected!')
+  time.sleep(60)
+  pinponflag = False
+
 def PinPonDetect():
   global pinponflag
   if pinponflag == False:
-    pinponflag = True
-    print('PinPonDetected!')
-    time.sleep(60)
-    pinponflag = False
+    threading.Thread(target=PinPonNotify).start
   else:
     pass
 
-pinpond = threading.Thread(target=PinPonDetect)
+
 
 while True:
   try:
@@ -48,13 +52,13 @@ while True:
       #print(GPIO.input(sw))
 
       if his0 == his1 == his4 == his5 == 0 and his2 == his3 == his6 == his7 == 1:
-        pinpond.start()
+        PinPonDetect()
       if his0 == his1 == his4 == his5 == 1 and his2 == his3 == his6 == his7 == 0:
-        pinpond.start()
+        PinPonDetect()
       if his1 == his2 == his5 == his6 == 1 and his0 == his3 == his4 == his7 == 0:
-        pinpond.start()
+        PinPonDetect()
       if his1 == his2 == his5 == his6 == 0 and his0 == his3 == his4 == his7 == 1:
-        pinpond.start()
+        PinPonDetect()
       if i == 7:
         print('LoopReset!(Scanned 8 times so reset the loop.)')
 
