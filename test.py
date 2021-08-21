@@ -39,6 +39,7 @@ while True:
       #print(GPIO.input(sw))
 
       if his0 == his1 == his4 == his5 == 0 and his2 == his3 == his6 == his7 == 1:
+        print('detect!')
         PinPonD = PinPonDetect()
         PinPonD.MaggasePrintOnly
       if i == 7:
