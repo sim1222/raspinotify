@@ -35,7 +35,7 @@ pinponflag = False
 def PinPonNotify():
   global pinponflag
   pinponflag = True
-  print('PinPonDetected!' + datetime.datetime.now())
+  print('PinPonDetected!', datetime.datetime.now())
   notify.linenotify()
   time.sleep(10)
   pinponflag = False
