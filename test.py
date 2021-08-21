@@ -38,7 +38,7 @@ def PinPonDetect():
   global pinponflag
   if pinponflag == False:
     notfy = threading.Thread(target=PinPonNotify)
-    notfy.start
+    notfy.start()
   else:
     pass
 
