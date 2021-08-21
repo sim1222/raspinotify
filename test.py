@@ -1,5 +1,6 @@
 import RPi.GPIO as GPIO
 import time
+import threading
 
 sw = 20
 led = 21
@@ -36,6 +37,7 @@ def PinPonDetect():
   else:
     pass
 
+pinpond = threading.Thread(target=PinPonDetect)
 
 while True:
   try:
@@ -46,13 +48,13 @@ while True:
       #print(GPIO.input(sw))
 
       if his0 == his1 == his4 == his5 == 0 and his2 == his3 == his6 == his7 == 1:
-        PinPonDetect()
+        pinpond.start()
       if his0 == his1 == his4 == his5 == 1 and his2 == his3 == his6 == his7 == 0:
-        PinPonDetect()
+        pinpond.start()
       if his1 == his2 == his5 == his6 == 1 and his0 == his3 == his4 == his7 == 0:
-        PinPonDetect()
+        pinpond.start()
       if his1 == his2 == his5 == his6 == 0 and his0 == his3 == his4 == his7 == 1:
-        PinPonDetect()
+        pinpond.start()
       if i == 7:
         print('LoopReset!(Scanned 8 times so reset the loop.)')
 
