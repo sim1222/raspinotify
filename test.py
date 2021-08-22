@@ -5,19 +5,26 @@ import datetime
 import threading
 import notify
 
+#GPIO pin set
 lightsensor = 20
 callsw = 17
 led = 21
 
+#Setmode set
 GPIO.setmode(GPIO.BCM)
 
-#GPIO.setup(sw, GPIO.IN)
+#GPIO setup
 GPIO.setup(lightsensor, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(callsw, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(led, GPIO.OUT)
 
-swinfo = GPIO.input(lightsensor)
+#GPIO interrupt setting
+GPIO.add_event_detect(callsw, GPIO.RISING, bouncetime=1000)
 
+GPIO.add_event_callback(callsw)
+
+#sensor history, flag init
+swinfo = GPIO.input(lightsensor)
 
 lighthis = ['his0', 'his1', 'his2', 'his3', 'his4', 'his5', 'his6', 'his7', ]
 
@@ -32,11 +39,14 @@ his7 = 0
 
 pinponflag = False
 
+#Setting func
+
 def PinPonNotify():
   global pinponflag
   pinponflag = True
   print('PinPonDetected!', datetime.datetime.now())
-  notify.linenotify()
+  notify.linenotify('ピンポンテスト')
+  #notify.alexanotify()
   time.sleep(10)
   pinponflag = False
   print('PinPonReset!')
@@ -49,8 +59,11 @@ def PinPonDetect():
   else:
     pass
 
+def CallNotify():
+  notify.linenotify('ボタンテスト')
 
 
+#Main roop
 while True:
   try:
     #print('LoopStart!')
@@ -81,6 +94,7 @@ while True:
     break
 
     
+#Trash code
 
 #while True:
 #  try:
