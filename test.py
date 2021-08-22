@@ -18,10 +18,8 @@ GPIO.setup(lightsensor, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(callsw, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(led, GPIO.OUT)
 
-#GPIO interrupt setting
-GPIO.add_event_detect(callsw, GPIO.RISING, bouncetime=1000)
 
-GPIO.add_event_callback(callsw)
+
 
 #sensor history, flag init
 swinfo = GPIO.input(lightsensor)
@@ -62,6 +60,8 @@ def PinPonDetect():
 def CallNotify():
   notify.linenotify('ボタンテスト')
 
+#GPIO interrupt setting
+GPIO.add_event_detect(callsw, GPIO.RISING, callback=CallNotify, bouncetime=1000)
 
 #Main roop
 while True:
