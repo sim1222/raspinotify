@@ -8,7 +8,9 @@ import notify
 #GPIO pin set
 lightsensor = 20
 callsw = 17
-led = 21
+pinponled = 26
+callled = 19
+
 
 #Setmode set
 GPIO.setmode(GPIO.BCM)
@@ -16,8 +18,8 @@ GPIO.setmode(GPIO.BCM)
 #GPIO setup
 GPIO.setup(lightsensor, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(callsw, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(led, GPIO.OUT)
-
+GPIO.setup(pinponled, GPIO.OUT)
+GPIO.setup(callled, GPIO.OUT)
 
 
 
@@ -36,17 +38,40 @@ his6 = 0
 his7 = 0
 
 pinponflag = False
+tenmetu = False
 
 #Setting func
+class ledflash:
+  def blink(led):
+    global tenmetu
+    tenmetu = True
+    while tenmetu == True:
+      GPIO.output(led, True)
+      time.sleep(0.125)
+      GPIO.output(led, False)
+      time.sleep(0.125)
+    else:
+      GPIO.output(led, False)
+
+  def lit(led):
+    GPIO.output(led, True)
+
+  def stop(led):
+    global tenmetu
+    tenmetu = False
+    GPIO.output(led, False)
+
 
 def PinPonNotify():
   global pinponflag
   pinponflag = True
   print('PinPonDetected!', datetime.datetime.now())
+  threading.Thread(target=ledflash.blink(pinponled)).start()
   notify.linenotify('ピンポンテスト')
   #notify.alexanotify()
-  time.sleep(10)
+  time.sleep(30)
   pinponflag = False
+  ledflash.stop(pinponled)
   print('PinPonReset!')
 
 def PinPonDetect():
@@ -58,7 +83,10 @@ def PinPonDetect():
     pass
 
 def CallNotify(pin):
+  threading.Thread(target=ledflash.blink(callled)).start()
   notify.linenotify('ボタンテスト')
+  #notify.alexanotify()
+  ledflash.stop(callled)
 
 #GPIO interrupt setting
 GPIO.add_event_detect(callsw, GPIO.RISING, callback=CallNotify, bouncetime=1000)

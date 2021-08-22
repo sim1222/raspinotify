@@ -1,5 +1,6 @@
 import requests
 import subprocess
+import datetime
 
 def linenotify(massage):
     TOKEN = ''
@@ -10,8 +11,8 @@ def linenotify(massage):
     send_dic = {'message': send_contents}
 
     requests.post(api_url, headers=TOKEN_dic, data=send_dic)
-    print('LINE Notify sent.')
+    print('LINE Notify sent.', massage, datetime.datetime.now())
 
 def alexanotify(massage):
     subprocess.run('~/alexa_remote_control.sh -e "speak:' + massage + '"')
-    print('Alexa speak command sent.')
+    print('Alexa speak command sent.', massage ,datetime.datetime.now())
