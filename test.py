@@ -7,9 +7,9 @@ import notify
 
 #GPIO pin set
 lightsensor = 20
-callsw = 17
+callsw = 16
 pinponled = 26
-callled = 19
+callled = 20
 
 
 #Setmode set
@@ -67,7 +67,7 @@ def PinPonNotify():
   pinponflag = True
   print('PinPonDetected!', datetime.datetime.now())
   threading.Thread(target=ledflash.blink, args=(pinponled,)).start()
-  notify.linenotify('ピンポンテスト')
+  notify.linenotify('お客様がお見えです')
   notify.alexanotify('ピンポンテスト')
   ledflash.stop(pinponled)
   time.sleep(0.3)
