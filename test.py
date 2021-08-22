@@ -6,7 +6,7 @@ import threading
 import notify
 
 #GPIO pin set
-lightsensor = 20
+lightsensor = 21
 callsw = 16
 pinponled = 26
 callled = 20
