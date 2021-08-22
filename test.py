@@ -89,6 +89,8 @@ def CallNotify(pin):
   threading.Thread(target=ledflash.blink, args=(callled,)).start()
   notify.linenotify('ボタンテスト')
   notify.alexanotify('ボタンテスト')
+  ledflash.stop(pinponled)
+  time.sleep(0.3)
   ledflash.lit(callled)
   time.sleep(2)
   ledflash.stop(callled)
