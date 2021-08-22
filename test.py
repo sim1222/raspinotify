@@ -96,7 +96,7 @@ def CallNotify(pin):
   ledflash.stop(callled)
 
 #GPIO interrupt setting
-GPIO.add_event_detect(callsw, GPIO.RISING, callback=CallNotify, bouncetime=1000)
+GPIO.add_event_detect(callsw, GPIO.RISING, callback=CallNotify, bouncetime=5000)
 
 #Main roop
 while True:
