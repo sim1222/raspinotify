@@ -57,7 +57,7 @@ def PinPonDetect():
   else:
     pass
 
-def CallNotify():
+def CallNotify(pin):
   notify.linenotify('ボタンテスト')
 
 #GPIO interrupt setting
