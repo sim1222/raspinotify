@@ -66,8 +66,7 @@ def PinPonNotify():
   global pinponflag
   pinponflag = True
   print('PinPonDetected!', datetime.datetime.now())
-  blink = threading.Thread(target=ledflash.blink(pinponled))
-  blink.start()
+  threading.Thread(target=ledflash.blink, args=(pinponled,)).start()
   notify.linenotify('ピンポンテスト')
   #notify.alexanotify()
   time.sleep(10)
@@ -84,7 +83,7 @@ def PinPonDetect():
     pass
 
 def CallNotify(pin):
-  threading.Thread(target=ledflash.blink(callled)).start()
+  threading.Thread(target=ledflash.blink, args=(callled,)).start()
   notify.linenotify('ボタンテスト')
   #notify.alexanotify()
   ledflash.stop(callled)
