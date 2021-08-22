@@ -14,5 +14,5 @@ def linenotify(massage):
     print('LINE Notify sent.', massage, datetime.datetime.now())
 
 def alexanotify(massage):
-    subprocess.run('~/alexa_remote_control.sh -e "speak:' + massage + '"')
+    subprocess.run('~/alexa_remote_control.sh -e "speak:' + massage + '"', shell=True)
     print('Alexa speak command sent.', massage ,datetime.datetime.now())

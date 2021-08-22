@@ -68,10 +68,12 @@ def PinPonNotify():
   print('PinPonDetected!', datetime.datetime.now())
   threading.Thread(target=ledflash.blink, args=(pinponled,)).start()
   notify.linenotify('ピンポンテスト')
-  #notify.alexanotify()
-  time.sleep(10)
-  pinponflag = False
+  notify.alexanotify('ピンポンテスト')
   ledflash.stop(pinponled)
+  ledflash.lit(pinponled)
+  time.sleep(10)
+  ledflash.stop(pinponled)
+  pinponflag = False
   print('PinPonReset!')
 
 def PinPonDetect():
@@ -85,7 +87,9 @@ def PinPonDetect():
 def CallNotify(pin):
   threading.Thread(target=ledflash.blink, args=(callled,)).start()
   notify.linenotify('ボタンテスト')
-  #notify.alexanotify()
+  notify.alexanotify('ボタンテスト')
+  ledflash.lit(callled)
+  time.sleep(2)
   ledflash.stop(callled)
 
 #GPIO interrupt setting
