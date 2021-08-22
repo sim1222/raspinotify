@@ -69,7 +69,6 @@ def PinPonNotify():
   threading.Thread(target=ledflash.blink, args=(pinponled,)).start()
   notify.linenotify('ピンポンテスト')
   notify.alexanotify('ピンポンテスト')
-  ledflash.stop(pinponled)
   ledflash.lit(pinponled)
   time.sleep(10)
   ledflash.stop(pinponled)
