@@ -70,7 +70,7 @@ def PinPonNotify():
   notify.linenotify('ピンポンテスト')
   notify.alexanotify('ピンポンテスト')
   ledflash.stop(pinponled)
-  time.sleep(0.5)
+  time.sleep(0.3)
   ledflash.lit(pinponled)
   time.sleep(10)
   ledflash.stop(pinponled)
