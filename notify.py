@@ -16,3 +16,7 @@ def linenotify(massage):
 def alexanotify(massage):
     subprocess.run('~/alexa_remote_control.sh -e "speak:' + massage + '"', shell=True)
     print('Alexa speak command sent.', massage ,datetime.datetime.now())
+
+def homebridgenotify():
+    subprocess.run("curl -X POST -d 'ding=dong&dong=ding' http://192.168.1.12:9999", shell=True)
+    print('HomeBridge request sent.', datetime.datetime.now())
