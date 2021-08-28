@@ -68,7 +68,7 @@ def PinPonNotify():
   print('PinPonDetected!', datetime.datetime.now())
   threading.Thread(target=ledflash.blink, args=(pinponled,)).start()
   notify.linenotify('お客様がお見えです')
-  notify.alexanotify('ピンポンテスト')
+  notify.alexanotify('お客様がお見えです')
   ledflash.stop(pinponled)
   time.sleep(0.3)
   ledflash.lit(pinponled)
@@ -87,8 +87,8 @@ def PinPonDetect():
 
 def CallNotify(pin):
   threading.Thread(target=ledflash.blink, args=(callled,)).start()
-  notify.linenotify('ボタンテスト')
-  notify.alexanotify('ボタンテスト')
+  notify.linenotify('ボタンが押されました')
+  notify.alexanotify('お呼び出しされています')
   ledflash.stop(pinponled)
   time.sleep(0.3)
   ledflash.lit(callled)
