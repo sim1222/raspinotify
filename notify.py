@@ -20,3 +20,7 @@ def alexanotify(massage):
 def homebridgenotify():
     subprocess.run("curl -X POST -d 'ding=dong&dong=ding' http://192.168.1.12:9999", shell=True)
     print('HomeBridge request sent.', datetime.datetime.now())
+
+def misskeynotify():
+    subprocess.run('curl -H "Content-Type: application/json" -X POST -d "{"i": "pd3CNLfAfi1riSSdXN1l9hmzeBm87UUm", "text": "@sim1222@misskey.io お客様が来てますよ！"}" https://simkey.net/api/notes/create', shell=True)
+    print('Misskey sent.', datetime.datetime.now())

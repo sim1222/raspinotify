@@ -70,6 +70,7 @@ def PinPonNotify():
   notify.linenotify('お客様がお見えです')
   notify.alexanotify('お客様がお見えです')
   notify.homebridgenotify()
+  notify.misskeynotify()
   ledflash.stop(pinponled)
   time.sleep(0.3)
   ledflash.lit(pinponled)
