@@ -2,6 +2,8 @@ import requests
 import subprocess
 import datetime
 
+misskeysendcommand = 'curl -H "Content-Type: application/json" -X POST -d ' + '\'{"i": "", "text": "@sim1222@misskey.io お客様が来てますよ！"}\'' + ' https://simkey.net/api/notes/create'
+
 def linenotify(massage):
     TOKEN = ''
     api_url = 'https://notify-api.line.me/api/notify'
@@ -22,5 +24,6 @@ def homebridgenotify():
     print('HomeBridge request sent.', datetime.datetime.now())
 
 def misskeynotify():
-    subprocess.run('curl -H "Content-Type: application/json" -X POST -d "{"i": "pd3CNLfAfi1riSSdXN1l9hmzeBm87UUm", "text": "@sim1222@misskey.io お客様が来てますよ！"}" https://simkey.net/api/notes/create', shell=True)
+    print(misskeysendcommand)
+    subprocess.run(misskeysendcommand, shell=True)
     print('Misskey sent.', datetime.datetime.now())
